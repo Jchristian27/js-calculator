@@ -1,0 +1,44 @@
+body {
+  display: flex;
+}
+
+.container {
+  display: flex;
+}
+
+.calc-border {
+  display: flex;
+}
+
+.display {
+  display: flex;
+}
+
+.button-rows {
+  display: flex;
+}
+
+.row-1 {
+  display: flex;
+}
+
+.row-2 {
+  display: flex;
+}
+
+.row-3 {
+  display: flex;
+}
+
+.row-4 {
+  display: flex;
+}
+
+.row-5 {
+  display: flex;
+}
+
+.button {
+  display: flex;
+}
+
