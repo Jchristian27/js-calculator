@@ -36,7 +36,8 @@ body {
 
 .display {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: center;
   height: 115px;
   width: 375px;
   background-color: #E5E4E2;
