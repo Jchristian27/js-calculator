@@ -68,7 +68,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #add8e6;
+  background-color: #9c89ff;
   border: 2px solid black;
   width: 180px;
   height: 65px;
@@ -109,7 +109,7 @@ body {
 }
 
 .delete:hover {
-  background-color: #8aadb8;
+  background-color: #7d6ecc;
 }
 
 .button:hover {
