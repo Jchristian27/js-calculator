@@ -1,22 +1,22 @@
-let display = document.querySelector('.display');
-let one = document.querySelector('#1');
-let two = document.querySelector('#2');
-let three = document.querySelector('#3');
-let four = document.querySelector('#4');
-let five = document.querySelector('#5');
-let six = document.querySelector('#6');
-let seven = document.querySelector('#7');
-let eight = document.querySelector('#8');
-let nine = document.querySelector('#9');
-let zero = document.querySelector('#0');
-let point = document.querySelector('#point');
-let plus = document.querySelector('#plus');
-let minus = document.querySelector('#subtract');
-let times = document.querySelector('#multiply');
-let divide = document.querySelector('#divide');
-let equals = document.querySelector('#equals');
-let clear = document.querySelector('.clear');
-let deletes = document.querySelector('.delete');
+const display = document.querySelector('.display');
+const one = document.getElementById('#one');
+const two = document.getElementById('#two');
+const three = document.getElementById('#three');
+const four = document.getElementById('#four');
+const five = document.getElementById('#five');
+const six = document.getElementById('#six');
+const seven = document.getElementById('#seven');
+const eight = document.getElementById('#eight');
+const nine = document.getElementById('#nine');
+const zero = document.getElementById('#zero');
+const point = document.getElementById('#point');
+const plus = document.getElementById('#plus');
+const minus = document.getElementById('#subtract');
+const times = document.getElementById('#multiply');
+const divides = document.getElementById('#divide');
+const equals = document.getElementById('#equals');
+const clear = document.querySelector('.clear');
+const deletes = document.querySelector('.delete');
 
 function add(a, b) {
   return a + b;
@@ -40,4 +40,12 @@ function operate(a, b, operator) {
 
 display.addEventListener('click', function() {
   display.innerHTML = "<h2>TEST</h2>";
+})
+
+clear.addEventListener('click', function() {
+  display.innerHTML = "<h2>0</h2>";
+});
+
+two.addEventListener("click", function() {
+  display.innerHTML = "<h2>1</h2>";
 })
