@@ -52,6 +52,7 @@ body {
 .row-1 {
   display: flex;
   justify-content: space-around;
+  margin: 0;
 }
 
 .clear {
@@ -77,21 +78,25 @@ body {
 .row-2 {
   display: flex;
   justify-content: space-around;
+  margin: 0;
 }
 
 .row-3 {
   display: flex;
   justify-content: space-around;
+  margin: 0;
 }
 
 .row-4 {
   display: flex;
   justify-content: space-around;
+  margin: 0;
 }
 
 .row-5 {
   display: flex;
   justify-content: space-around;
+  margin: 0;
 }
 
 .button {
