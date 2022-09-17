@@ -47,6 +47,14 @@ body {
   font-size: 28px;
 }
 
+.calculation-display {
+  display: flex;
+}
+
+.current-number {
+  display: flex;
+}
+
 .button-rows {
   display: flex;
   flex-direction: column;
