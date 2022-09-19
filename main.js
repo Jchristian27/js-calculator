@@ -42,74 +42,81 @@ function operate(a, b, operator) {
   return operator(a,b);
 };
 
+function addToDisplay(symbol) {
+  currentNumber.innerHTML += `<h2>${symbol}</h2>`
+}
+
 one.addEventListener('click', function() {
-  currentNumber.innerHTML += "<h2>1</h2>";
+  addToDisplay('1');
 });
 
 two.addEventListener('click', function() {
-  currentNumber.innerHTML += "<h2>2</h2>";
+  addToDisplay('2');
 });
 
 three.addEventListener('click', function() {
-  currentNumber.innerHTML += "<h2>3</h2>";
+  addToDisplay('3');
 });
 
 four.addEventListener('click', function() {
-  currentNumber.innerHTML += "<h2>4</h2>";
+  addToDisplay('4');
 });
 
 five.addEventListener('click', function() {
-  currentNumber.innerHTML += "<h2>5</h2>";
+  addToDisplay('5');
 });
 
 six.addEventListener('click', function() {
-  currentNumber.innerHTML += "<h2>6</h2>";
+  addToDisplay('6');
 });
 
 seven.addEventListener('click', function() {
-  currentNumber.innerHTML += "<h2>7</h2>";
+  addToDisplay('7');
 });
 
 eight.addEventListener('click', function() {
-  currentNumber.innerHTML += "<h2>8</h2>";
+  addToDisplay('8');
 });
 
 nine.addEventListener('click', function() {
-  currentNumber.innerHTML += "<h2>9</h2>";
+  addToDisplay('9');
 });
 
 zero.addEventListener('click', function() {
-  currentNumber.innerHTML += "<h2>0</h2>";
+  addToDisplay('0');
 });
 
 point.addEventListener('click', function() {
-  currentNumber.innerHTML += "<h2>.</h2>";
+  addToDisplay('.');
 });
 
 plus.addEventListener('click', function() {
-  currentNumber.innerHTML += "<h2>+</h2>";
+  addToDisplay('+');
 });
 
 minus.addEventListener('click', function() {
-  currentNumber.innerHTML += "<h2>-</h2>";
+  addToDisplay('-');
 });
 
 divides.addEventListener('click', function() {
-  currentNumber.innerHTML += "<h2>÷</h2>";
+  addToDisplay('÷');
 });
 
 times.addEventListener('click', function() {
-  currentNumber.innerHTML += "<h2>×</h2>";
+  addToDisplay('×');
 });
 
 equals.addEventListener('click', function() {
-  currentNumber.innerHTML += "<h2>=</h2>";
+  addToDisplay('=');
 });
 
 deletes.addEventListener('click', function() {
   display.innerHTML = "<h2>0</h2>";
+  currentNumber.innerHTML = "<h2>0</h2>";
 });
 
 clear.addEventListener('click', function() {
   display.innerHTML = "<h2>0</h2>";
+  currentNumber.innerHTML = "<h2>0</h2>";
 });
+
