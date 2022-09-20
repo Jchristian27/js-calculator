@@ -1,6 +1,6 @@
 const display = document.querySelector('.display');
-const currentCalculation = document.querySelector('.calculation-display');
-const currentNumber = document.querySelector('.current-number');
+let currentCalculationDiv = document.querySelector('.calculation-display');
+let currentNumberDiv = document.querySelector('.current-number');
 const one = document.getElementById('one');
 const two = document.getElementById('two');
 const three = document.getElementById('three');
@@ -19,8 +19,11 @@ const divides = document.getElementById('divide');
 const equals = document.getElementById('equals');
 const clear = document.querySelector('.clear');
 const deletes = document.querySelector('.delete');
+let currentCalculationValue = [];
+let currentNumberValue = 0;
 
-currentCalculation.innerHTML = '<h2>69 + 420</h2>';
+currentCalculationDiv.innerHTML = "<h2 style='color: #E5E4E2'>0</h2>";
+currentNumberDiv.innerHTML = "<h2>0</h2>";
 
 function add(a, b) {
   return a + b;
@@ -43,7 +46,11 @@ function operate(a, b, operator) {
 };
 
 function addToDisplay(symbol) {
-  currentNumber.innerHTML += `<h2>${symbol}</h2>`
+  if (currentNumberDiv.innerHTML === "<h2>0</h2>") {
+    currentNumberDiv.innerHTML = `<h2>${symbol}</h2>`;
+  } else {
+    currentNumberDiv.innerHTML += `<h2>${symbol}</h2>`;
+  }
 }
 
 one.addEventListener('click', function() {
@@ -111,12 +118,11 @@ equals.addEventListener('click', function() {
 });
 
 deletes.addEventListener('click', function() {
-  display.innerHTML = "<h2>0</h2>";
-  currentNumber.innerHTML = "<h2>0</h2>";
+  currentCalculationDiv.innerHTML = "<h2 style='color: #E5E4E2'>0</h2>";
+  currentNumberDiv.innerHTML = "<h2>0</h2>";
 });
 
 clear.addEventListener('click', function() {
-  display.innerHTML = "<h2>0</h2>";
-  currentNumber.innerHTML = "<h2>0</h2>";
+  currentCalculationDiv.innerHTML = "<h2 style='color: #E5E4E2'>0</h2>";
+  currentNumberDiv.innerHTML = "<h2>0</h2>";
 });
-
