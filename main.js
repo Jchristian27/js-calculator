@@ -125,6 +125,7 @@ plus.addEventListener('click', function() {
   console.log(currentNumberValue);
   console.log(currentCalculationValue);
   currentNumberValue = '';
+  currentNumberDiv.innerHTML = '<h2></h2>';
 });
 
 minus.addEventListener('click', function() {
@@ -135,6 +136,7 @@ minus.addEventListener('click', function() {
   console.log(currentNumberValue);
   console.log(currentCalculationValue);
   currentNumberValue = '';
+  currentNumberDiv.innerHTML = '<h2></h2>';
 });
 
 divides.addEventListener('click', function() {
@@ -156,6 +158,7 @@ times.addEventListener('click', function() {
   console.log(currentNumberValue);
   console.log(currentCalculationValue);
   currentNumberValue = '';
+  currentNumberDiv.innerHTML = '<h2></h2>';
 });
 
 equals.addEventListener('click', function() {
@@ -165,12 +168,12 @@ equals.addEventListener('click', function() {
   currentCalculationValue[1]);
 });
 
-deletes.addEventListener('click', function() {
+clear.addEventListener('click', function() {
   currentCalculationDiv.innerHTML = "<h2 style='color: #E5E4E2'>0</h2>";
   currentNumberDiv.innerHTML = "<h2>0</h2>";
 });
 
-clear.addEventListener('click', function() {
+deletes.addEventListener('click', function() {
   currentCalculationDiv.innerHTML = "<h2 style='color: #E5E4E2'>0</h2>";
   currentNumberDiv.innerHTML = "<h2>0</h2>";
 });
