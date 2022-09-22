@@ -19,8 +19,8 @@ const divides = document.getElementById('divide');
 const equals = document.getElementById('equals');
 const clear = document.querySelector('.clear');
 const deletes = document.querySelector('.delete');
-let currentCalculationValue = [];
-let currentNumberValue = 0;
+let currentCalculationValue = [ ];
+let currentNumberValue = '';
 
 currentCalculationDiv.innerHTML = "<h2 style='color: #E5E4E2'>0</h2>";
 currentNumberDiv.innerHTML = "<h2>0</h2>";
@@ -42,15 +42,35 @@ function divide(a, b) {
 };
 
 function operate(a, b, operator) {
-  return operator(a,b);
+  if (operator === '+') {
+    currentNumberDiv.innerHTML = `<h2>${add(a,b)}</h2>`;
+  } else if (operator === '-') {
+    currentNumberDiv.innerHTML = `<h2>${subtract(a,b)}</h2>`;
+  } else if (operator === '×') {
+    currentNumberDiv.innerHTML = `<h2>${multiply(a,b)}</h2>`;
+  } else {
+    currentNumberDiv.innerHTML = `<h2>${divide(a,b)}</h2>`;
+  }
 };
 
 function addToDisplay(symbol) {
   if (currentNumberDiv.innerHTML === "<h2>0</h2>") {
     currentNumberDiv.innerHTML = `<h2>${symbol}</h2>`;
+    currentNumberValue += symbol;
+    console.log(currentNumberValue);
+    console.log(currentCalculationValue);
   } else {
     currentNumberDiv.innerHTML += `<h2>${symbol}</h2>`;
+    currentNumberValue += symbol;
+    console.log(currentNumberValue);
+    console.log(currentCalculationValue);
   }
+}
+
+function stringToNum(string) {
+  num = parseInt(string);
+  return num;
+  console.log(num);
 }
 
 one.addEventListener('click', function() {
@@ -98,23 +118,51 @@ point.addEventListener('click', function() {
 });
 
 plus.addEventListener('click', function() {
-  addToDisplay('+');
+  currentCalculationDiv.innerHTML = `<h2>${currentNumberValue} +</h2>`;
+  numToPush = stringToNum(currentNumberValue);
+  currentCalculationValue.push(numToPush);
+  currentCalculationValue.push('+');
+  console.log(currentNumberValue);
+  console.log(currentCalculationValue);
+  currentNumberValue = '';
 });
 
 minus.addEventListener('click', function() {
-  addToDisplay('-');
+  currentCalculationDiv.innerHTML = `<h2>${currentNumberValue} -</h2>`;
+  numToPush = stringToNum(currentNumberValue);
+  currentCalculationValue.push(numToPush);
+  currentCalculationValue.push('-');
+  console.log(currentNumberValue);
+  console.log(currentCalculationValue);
+  currentNumberValue = '';
 });
 
 divides.addEventListener('click', function() {
-  addToDisplay('÷');
+  currentCalculationDiv.innerHTML = `<h2>${currentNumberValue} ÷</h2>`;
+  numToPush = stringToNum(currentNumberValue);
+  currentCalculationValue.push(numToPush);
+  currentCalculationValue.push('÷');
+  console.log(currentNumberValue);
+  console.log(currentCalculationValue);
+  currentNumberValue = '';
+  currentNumberDiv.innerHTML = '<h2></h2>';
 });
 
 times.addEventListener('click', function() {
-  addToDisplay('×');
+  currentCalculationDiv.innerHTML = `<h2>${currentNumberValue} ×</h2>`;
+  numToPush = stringToNum(currentNumberValue);
+  currentCalculationValue.push(numToPush);
+  currentCalculationValue.push('×');
+  console.log(currentNumberValue);
+  console.log(currentCalculationValue);
+  currentNumberValue = '';
 });
 
 equals.addEventListener('click', function() {
-  addToDisplay('=');
+  numToPush = stringToNum(currentNumberValue);
+  currentCalculationValue.push(numToPush);
+  operate(currentCalculationValue[0], currentCalculationValue[2], 
+  currentCalculationValue[1]);
 });
 
 deletes.addEventListener('click', function() {
