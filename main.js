@@ -39,7 +39,7 @@ function add(a, b) {
 
 function subtract(a, b) {
   let difference = (a - b).toFixed(2);
-  let differenceArr = Array.from(sum);
+  let differenceArr = Array.from(difference);
   let lastElement = differenceArr.length - 1;
   let secondToLastElement = lastElement - 1;
   if (differenceArr[lastElement] && differenceArr[secondToLastElement] === '0') {
@@ -50,8 +50,8 @@ function subtract(a, b) {
 };
 
 function multiply(a, b) {
-  let product = (a + b).toFixed(2);
-  let productArr = Array.from(sum);
+  let product = (a * b).toFixed(2);
+  let productArr = Array.from(product);
   let lastElement = productArr.length - 1;
   let secondToLastElement = lastElement - 1;
   if (productArr[lastElement] && productArr[secondToLastElement] === '0') {
@@ -62,8 +62,8 @@ function multiply(a, b) {
 };
 
 function divide(a, b) {
-  let quotient = (a + b).toFixed(2);
-  let quotientArr = Array.from(sum);
+  let quotient = (a / b).toFixed(2);
+  let quotientArr = Array.from(quotient);
   let lastElement = quotientArr.length - 1;
   let secondToLastElement = lastElement - 1;
   if (quotientArr[lastElement] && quotientArr[secondToLastElement] === '0') {
