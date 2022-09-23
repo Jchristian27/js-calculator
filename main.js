@@ -43,13 +43,13 @@ function divide(a, b) {
 
 function operate(a, b, operator) {
   if (operator === '+') {
-    currentNumberDiv.innerHTML = `<h2>${add(a,b)}</h2>`;
+    currentNumberDiv.innerHTML = `<h2>${add(a,b).toFixed(2)}</h2>`;
   } else if (operator === '-') {
-    currentNumberDiv.innerHTML = `<h2>${subtract(a,b)}</h2>`;
+    currentNumberDiv.innerHTML = `<h2>${subtract(a,b).toFixed(2)}</h2>`;
   } else if (operator === '×') {
-    currentNumberDiv.innerHTML = `<h2>${multiply(a,b)}</h2>`;
+    currentNumberDiv.innerHTML = `<h2>${multiply(a,b).toFixed(2)}</h2>`;
   } else {
-    currentNumberDiv.innerHTML = `<h2>${divide(a,b)}</h2>`;
+    currentNumberDiv.innerHTML = `<h2>${divide(a,b).toFixed(2)}</h2>`;
   }
 };
 
@@ -68,9 +68,8 @@ function addToDisplay(symbol) {
 }
 
 function stringToNum(string) {
-  num = parseInt(string);
+  num = parseFloat(string)
   return num;
-  console.log(num);
 }
 
 one.addEventListener('click', function() {
