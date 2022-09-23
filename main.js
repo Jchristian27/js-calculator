@@ -38,15 +38,39 @@ function add(a, b) {
 };
 
 function subtract(a, b) {
-  return a - b;
+  let difference = (a - b).toFixed(2);
+  let differenceArr = Array.from(sum);
+  let lastElement = differenceArr.length - 1;
+  let secondToLastElement = lastElement - 1;
+  if (differenceArr[lastElement] && differenceArr[secondToLastElement] === '0') {
+    return Math.trunc(difference);
+  } else {
+    return difference;
+  }
 };
 
 function multiply(a, b) {
-  return a * b;
+  let product = (a + b).toFixed(2);
+  let productArr = Array.from(sum);
+  let lastElement = productArr.length - 1;
+  let secondToLastElement = lastElement - 1;
+  if (productArr[lastElement] && productArr[secondToLastElement] === '0') {
+    return Math.trunc(product);
+  } else {
+    return product;
+  }
 };
 
 function divide(a, b) {
-  return a / b;
+  let quotient = (a + b).toFixed(2);
+  let quotientArr = Array.from(sum);
+  let lastElement = quotientArr.length - 1;
+  let secondToLastElement = lastElement - 1;
+  if (quotientArr[lastElement] && quotientArr[secondToLastElement] === '0') {
+    return Math.trunc(quotient);
+  } else {
+    return quotient;
+  }
 };
 
 function operate(a, b, operator) {
