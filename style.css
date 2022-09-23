@@ -124,6 +124,20 @@ body {
   width: 85px;
 }
 
+#divide,
+#multiply, 
+#subtract,
+#plus {
+  background-color: #EE9F27;
+}
+
+#divide:hover,
+#multiply:hover, 
+#subtract:hover,
+#plus:hover {
+  background-color: #be7f1f;
+}
+
 .clear:hover {
   background-color: #c8665b;
 }
