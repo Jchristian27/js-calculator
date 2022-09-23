@@ -26,7 +26,15 @@ currentCalculationDiv.innerHTML = "<h2 style='color: #E5E4E2'>0</h2>";
 currentNumberDiv.innerHTML = "<h2>0</h2>";
 
 function add(a, b) {
-  return a + b;
+  let sum = (a + b).toFixed(2);
+  let sumArr = Array.from(sum);
+  let lastElement = sumArr.length - 1;
+  let secondToLastElement = lastElement - 1;
+  if (sumArr[lastElement] && sumArr[secondToLastElement] === '0') {
+    return Math.trunc(sum);
+  } else {
+    return sum;
+  }
 };
 
 function subtract(a, b) {
@@ -43,13 +51,13 @@ function divide(a, b) {
 
 function operate(a, b, operator) {
   if (operator === '+') {
-    currentNumberDiv.innerHTML = `<h2>${add(a,b).toFixed(2)}</h2>`;
+    currentNumberDiv.innerHTML = `<h2>${add(a,b)}</h2>`;
   } else if (operator === '-') {
-    currentNumberDiv.innerHTML = `<h2>${subtract(a,b).toFixed(2)}</h2>`;
+    currentNumberDiv.innerHTML = `<h2>${subtract(a,b)}</h2>`;
   } else if (operator === '×') {
-    currentNumberDiv.innerHTML = `<h2>${multiply(a,b).toFixed(2)}</h2>`;
+    currentNumberDiv.innerHTML = `<h2>${multiply(a,b)}</h2>`;
   } else {
-    currentNumberDiv.innerHTML = `<h2>${divide(a,b).toFixed(2)}</h2>`;
+    currentNumberDiv.innerHTML = `<h2>${divide(a,b)}</h2>`;
   }
 };
 
