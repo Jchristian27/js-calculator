@@ -210,6 +210,9 @@ clear.addEventListener('click', function() {
 });
 
 deletes.addEventListener('click', function() {
-  currentCalculationDiv.innerHTML = "<h2 style='color: #E5E4E2'>0</h2>";
-  currentNumberDiv.innerHTML = "<h2>0</h2>";
+  let oneLess = currentNumberValue.split("");
+  oneLess.pop();
+  let stringAgain = oneLess.join('');
+  currentNumberValue = stringAgain;
+  currentNumberDiv.innerHTML = `<h2>${stringAgain}</h2>`;
 });
