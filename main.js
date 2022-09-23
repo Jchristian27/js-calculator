@@ -162,13 +162,18 @@ times.addEventListener('click', function() {
 });
 
 equals.addEventListener('click', function() {
+  currentCalculationDiv.innerHTML += `<h2>${currentNumberValue} =</h2>`;
   numToPush = stringToNum(currentNumberValue);
   currentCalculationValue.push(numToPush);
   operate(currentCalculationValue[0], currentCalculationValue[2], 
   currentCalculationValue[1]);
+  console.log(currentNumberValue);
+  console.log(currentCalculationValue);
 });
 
 clear.addEventListener('click', function() {
+  currentCalculationValue = [ ];
+  currentNumberValue = '';
   currentCalculationDiv.innerHTML = "<h2 style='color: #E5E4E2'>0</h2>";
   currentNumberDiv.innerHTML = "<h2>0</h2>";
 });
