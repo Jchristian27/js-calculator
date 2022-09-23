@@ -66,7 +66,9 @@ function divide(a, b) {
   let quotientArr = Array.from(quotient);
   let lastElement = quotientArr.length - 1;
   let secondToLastElement = lastElement - 1;
-  if (quotientArr[lastElement] && quotientArr[secondToLastElement] === '0') {
+  if (b === 0 ) {
+    window.alert("You can't divide by zero silly!");
+  } else if (quotientArr[lastElement] && quotientArr[secondToLastElement] === '0') {
     return Math.trunc(quotient);
   } else {
     return quotient;
