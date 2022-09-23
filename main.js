@@ -145,7 +145,12 @@ zero.addEventListener('click', function() {
 });
 
 point.addEventListener('click', function() {
-  addToDisplay('.');
+  let currentNumberDivArr = Array.from(currentNumberValue);
+  if (currentNumberDivArr.includes('.')) {
+    //window.alert("You can only use one decimal per number!");
+  } else {
+    addToDisplay('.');
+  }
 });
 
 plus.addEventListener('click', function() {
