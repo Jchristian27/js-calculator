@@ -49,6 +49,7 @@ body {
 
 .calculation-display {
   display: flex;
+  gap: 5px;
   font-size: 14px;
   margin-top: 15px;
 }
