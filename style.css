@@ -55,7 +55,10 @@ body {
 
 .current-number {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   font-size: 28px;
+  max-width: 360px;
 }
 
 .button-rows {
@@ -157,4 +160,8 @@ body {
   margin-top: auto;
   padding-bottom: 15px;
   font-size: 18px;
+}
+
+h2 {
+  margin: 0;
 }
