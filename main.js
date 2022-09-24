@@ -66,9 +66,7 @@ function divide(a, b) {
   let quotientArr = Array.from(quotient);
   let lastElement = quotientArr.length - 1;
   let secondToLastElement = lastElement - 1;
-  if (b === 0 ) {
-    window.alert("You can't divide by zero silly!");
-  } else if (quotientArr[lastElement] && quotientArr[secondToLastElement] === '0') {
+  if (quotientArr[lastElement] && quotientArr[secondToLastElement] === '0') {
     return Math.trunc(quotient);
   } else {
     return quotient;
@@ -82,8 +80,16 @@ function operate(a, b, operator) {
     currentNumberDiv.innerHTML = `<h2>${subtract(a,b)}</h2>`;
   } else if (operator === '×') {
     currentNumberDiv.innerHTML = `<h2>${multiply(a,b)}</h2>`;
+  } else if (operator === '÷') {
+    if (b === 0) {
+      window.alert("You can't divide by zero silly!");
+      currentCalculationValue.pop();
+      currentCalculationDiv.innerHTML = `<h2>${a} ${operator}</h2>`;
+    } else {
+      currentNumberDiv.innerHTML = `<h2>${divide(a,b)}</h2>`;
+    }
   } else {
-    currentNumberDiv.innerHTML = `<h2>${divide(a,b)}</h2>`;
+    window.alert("An error has occured. Please press CLEAR and try again.")
   }
 };
 
@@ -203,8 +209,8 @@ equals.addEventListener('click', function() {
   console.table(currentCalculationValue);
   arrLength = currentCalculationValue.length;
   if (currentCalculationValue.length < 2 || (currentCalculationValue.length < 3
-  && currentNumberDiv.innerHTML === '<h2></h2>')) {
-    //window.alert("You need to enter at least two numbers before you hit the = button!");
+     && currentNumberDiv.innerHTML === '<h2></h2>')) {
+      //window.alert("You need to enter at least two numbers before you hit the = button!");
   } else {
     currentCalculationDiv.innerHTML += `<h2>${currentNumberValue} =</h2>`;
     numToPush = stringToNum(currentNumberValue);
