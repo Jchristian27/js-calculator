@@ -94,17 +94,21 @@ function operate(a, b, operator) {
 };
 
 function addToDisplay(symbol) {
-  if (currentNumberDiv.innerHTML === "<h2>0</h2>") {
-    currentNumberDiv.innerHTML = `<h2>${symbol}</h2>`;
-    currentNumberValue += symbol;
-    console.log(currentNumberValue);
-    console.log(currentCalculationValue);
+  if (Array.from(currentNumberValue).length >= 9) {
+    // Do nothing because currentNum is too big to fit on the display.
   } else {
-    currentNumberDiv.innerHTML += `<h2>${symbol}</h2>`;
-    currentNumberValue += symbol;
-    console.log(currentNumberValue);
-    console.log(currentCalculationValue);
-  }
+    if (currentNumberDiv.innerHTML === "<h2>0</h2>") {
+        currentNumberDiv.innerHTML = `<h2>${symbol}</h2>`;
+        currentNumberValue += symbol;
+        console.log(currentNumberValue);
+        console.log(currentCalculationValue);
+      } else {
+        currentNumberDiv.innerHTML += `<h2>${symbol}</h2>`;
+        currentNumberValue += symbol;
+        console.log(currentNumberValue);
+        console.log(currentCalculationValue);
+      }
+    }
 }
 
 function stringToNum(string) {
@@ -137,7 +141,7 @@ six.addEventListener('click', function() {
 });
 
 seven.addEventListener('click', function() {
-  addToDisplay('7');
+    addToDisplay('7');
 });
 
 eight.addEventListener('click', function() {
