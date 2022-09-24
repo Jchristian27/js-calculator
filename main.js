@@ -200,13 +200,20 @@ times.addEventListener('click', function() {
 });
 
 equals.addEventListener('click', function() {
-  currentCalculationDiv.innerHTML += `<h2>${currentNumberValue} =</h2>`;
-  numToPush = stringToNum(currentNumberValue);
-  currentCalculationValue.push(numToPush);
-  operate(currentCalculationValue[0], currentCalculationValue[2], 
-  currentCalculationValue[1]);
-  console.log(currentNumberValue);
-  console.log(currentCalculationValue);
+  console.table(currentCalculationValue);
+  arrLength = currentCalculationValue.length;
+  if (currentCalculationValue.length < 2 || (currentCalculationValue.length < 3
+  && currentNumberDiv.innerHTML === '<h2></h2>')) {
+    //window.alert("You need to enter at least two numbers before you hit the = button!");
+  } else {
+    currentCalculationDiv.innerHTML += `<h2>${currentNumberValue} =</h2>`;
+    numToPush = stringToNum(currentNumberValue);
+    currentCalculationValue.push(numToPush);
+    operate(currentCalculationValue[0], currentCalculationValue[2], 
+    currentCalculationValue[1]);
+    console.log(currentNumberValue);
+    console.log(currentCalculationValue);
+  }
 });
 
 clear.addEventListener('click', function() {
