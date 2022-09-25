@@ -94,19 +94,19 @@ function operate(a, b, operator) {
 };
 
 function addToDisplay(symbol) {
-  if (Array.from(currentNumberValue).length >= 9) {
+  if (Array.from(currentNumberValue).length >= 10) {
     // Do nothing because currentNum is too big to fit on the display.
   } else {
     if (currentNumberDiv.innerHTML === "<h2>0</h2>") {
         currentNumberDiv.innerHTML = `<h2>${symbol}</h2>`;
         currentNumberValue += symbol;
-        console.log(currentNumberValue);
-        console.log(currentCalculationValue);
+        //console.log(currentNumberValue);
+        //console.log(currentCalculationValue);
       } else {
         currentNumberDiv.innerHTML += `<h2>${symbol}</h2>`;
         currentNumberValue += symbol;
-        console.log(currentNumberValue);
-        console.log(currentCalculationValue);
+        //console.log(currentNumberValue);
+        //console.log(currentCalculationValue);
       }
     }
 }
@@ -165,15 +165,17 @@ point.addEventListener('click', function() {
   }
 });
 
+//operate(parse)
+
 plus.addEventListener('click', function() {
-  currentCalculationDiv.innerHTML = `<h2>${currentNumberValue} +</h2>`;
-  numToPush = stringToNum(currentNumberValue);
-  currentCalculationValue.push(numToPush);
-  currentCalculationValue.push('+');
-  console.log(currentNumberValue);
-  console.log(currentCalculationValue);
-  currentNumberValue = '';
-  currentNumberDiv.innerHTML = '<h2></h2>';
+    currentCalculationDiv.innerHTML = `<h2>${currentNumberValue} +</h2>`;
+    numToPush = stringToNum(currentNumberValue);
+    currentCalculationValue.push(numToPush);
+    currentCalculationValue.push('+');
+    //console.log(currentNumberValue);
+    //console.log(currentCalculationValue);
+    currentNumberValue = '';
+    currentNumberDiv.innerHTML = '';
 });
 
 minus.addEventListener('click', function() {
@@ -181,8 +183,8 @@ minus.addEventListener('click', function() {
   numToPush = stringToNum(currentNumberValue);
   currentCalculationValue.push(numToPush);
   currentCalculationValue.push('-');
-  console.log(currentNumberValue);
-  console.log(currentCalculationValue);
+  //console.log(currentNumberValue);
+  //console.log(currentCalculationValue);
   currentNumberValue = '';
   currentNumberDiv.innerHTML = '<h2></h2>';
 });
@@ -192,8 +194,8 @@ divides.addEventListener('click', function() {
   numToPush = stringToNum(currentNumberValue);
   currentCalculationValue.push(numToPush);
   currentCalculationValue.push('÷');
-  console.log(currentNumberValue);
-  console.log(currentCalculationValue);
+  //console.log(currentNumberValue);
+  //console.log(currentCalculationValue);
   currentNumberValue = '';
   currentNumberDiv.innerHTML = '<h2></h2>';
 });
@@ -203,18 +205,18 @@ times.addEventListener('click', function() {
   numToPush = stringToNum(currentNumberValue);
   currentCalculationValue.push(numToPush);
   currentCalculationValue.push('×');
-  console.log(currentNumberValue);
-  console.log(currentCalculationValue);
+  //console.log(currentNumberValue);
+  //console.log(currentCalculationValue);
   currentNumberValue = '';
   currentNumberDiv.innerHTML = '<h2></h2>';
 });
 
 equals.addEventListener('click', function() {
-  console.table(currentCalculationValue);
+  //console.table(currentCalculationValue);
   arrLength = currentCalculationValue.length;
-  if (currentCalculationValue.length < 2 || (currentCalculationValue.length < 3
+  if (currentCalculationValue.length < 1 || (currentCalculationValue.length < 3
      && currentNumberDiv.innerHTML === '<h2></h2>')) {
-      //window.alert("You need to enter at least two numbers before you hit the = button!");
+      // Do nothing because there aren't two numbers to operate on yet.
   } else {
     currentCalculationDiv.innerHTML += `<h2>${currentNumberValue} =</h2>`;
     numToPush = stringToNum(currentNumberValue);
