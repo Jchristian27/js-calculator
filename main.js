@@ -27,73 +27,37 @@ currentNumberDiv.innerHTML = "<h2>0</h2>";
 
 function add(a, b) {
   let sum = (a + b);
-  let sumArr = Array.from(sum);
-  let lastElement = sumArr.length - 1;
-  let secondToLastElement = lastElement - 1;
-  if (sumArr[lastElement] && sumArr[secondToLastElement] === '0') {
-    return Math.trunc(sum);
-  } else {
-    return sum;
-  }
+  return sum;
 };
 
 function subtract(a, b) {
   let difference = (a - b);
-  let differenceArr = Array.from(difference);
-  let lastElement = differenceArr.length - 1;
-  let secondToLastElement = lastElement - 1;
-  if (differenceArr[lastElement] && differenceArr[secondToLastElement] === '0') {
-    return Math.trunc(difference);
-  } else {
-    return difference;
-  }
+  return difference;
 };
 
 function multiply(a, b) {
   let product = (a * b);
-  let productArr = Array.from(product);
-  let lastElement = productArr.length - 1;
-  let secondToLastElement = lastElement - 1;
-  if (productArr[lastElement] && productArr[secondToLastElement] === '0') {
-    return Math.trunc(product);
-  } else {
-    return product;
-  }
+  return product;
 };
 
 function divide(a, b) {
   let quotient = (a / b);
-  let quotientArr = Array.from(quotient);
-  let lastElement = quotientArr.length - 1;
-  let secondToLastElement = lastElement - 1;
-  if (quotientArr[lastElement] && quotientArr[secondToLastElement] === 0) {
-    return Math.trunc(quotient);
-  } else {
-    return quotient;
-  }
+  return quotient;
 };
 
 function operate(a, b, operator) {
   if (operator === '+') {
-    sum = add(a,b).toFixed(2);
+    let sum = add(a,b).toFixed(2);
     return sum;
   } else if (operator === '-') {
-    difference = subtract(a,b).toFixed(2);
+    let difference = subtract(a,b).toFixed(2);
     return difference;
   } else if (operator === '×') {
-    product = multiply(a,b).toFixed(2);
+    let product = multiply(a,b).toFixed(2);
     return product;
   } else if (operator === '÷') {
-    quotient = divide(a,b).toFixed(2);
-    let quotientArr = Array.from(quotient);
-    let lastElement = quotientArr.length - 1;
-    let secondToLastElement = lastElement - 1;
-    if (quotientArr[lastElement] && quotientArr[secondToLastElement] === 0) {
-      return Math.trunc(quotient);
-    } else {
-      return quotient;
-  }
-  
+    let quotient = divide(a,b).toFixed(2);
+    return quotient;
   } else {
     window.alert("An error has occured. Please press CLEAR and try again.")
   }
@@ -227,7 +191,7 @@ divides.addEventListener('click', function() {
     console.log(currentCalculationValue[0]);
     console.log(currentCalculationValue[1]);
     console.log(currentCalculationValue[2]);
-    if (currentCalculationValue[2] == 0) {
+    if (currentCalculationValue[2] === 0) {
       window.alert("You can't divide by zero silly!");
       currentCalculationValue.pop();
       currentNumberValue = [];
@@ -241,6 +205,7 @@ divides.addEventListener('click', function() {
       currentCalculationValue.push(newNumValue);
       currentCalculationValue.push('÷');
       currentCalculationDiv.innerHTML = `<h2>${newNumValue} ÷</h2>`;
+      console.log(typeof newNumValue);
     }
   }
 });
@@ -273,13 +238,12 @@ equals.addEventListener('click', function() {
      && currentNumberDiv.innerHTML === '<h2></h2>')) {
       // Do nothing because there aren't two numbers to operate on yet.
   } else {
-    currentCalculationDiv.innerHTML += `<h2>${currentNumberValue} =</h2>`;
-    numToPush = stringToNum(currentNumberValue);
-    currentCalculationValue.push(numToPush);
-    operate(currentCalculationValue[0], currentCalculationValue[2], 
-    currentCalculationValue[1]);
-    console.log(currentNumberValue);
-    console.log(currentCalculationValue);
+    currentCalculationValue.push(currentNumberValue.join(""));
+    let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
+    currentCalculationDiv.innerHTML = `<h2>${currentCalculationValue[0]} ${currentCalculationValue[1]} ${currentCalculationValue[2]} =</h2>`
+    currentNumberValue = [parseFloat(newNumValue)];
+    currentCalculationValue = [];
+    currentNumberDiv.innerHTML = `<h2>${newNumValue}</h2>`;
   }
 });
 
