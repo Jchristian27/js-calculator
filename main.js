@@ -80,7 +80,7 @@ function addToDisplay(symbol) {
 }
 
 function stringToNum(string) {
-  num = parseFloat(string)
+  let num = parseFloat(string);
   return num;
 }
 
@@ -133,8 +133,6 @@ point.addEventListener('click', function() {
   }
 });
 
-//operate(parse)
-
 plus.addEventListener('click', function() {
   if (currentCalculationValue.length < 2) {
     currentCalculationValue.push(currentNumberValue.join(""));
@@ -144,11 +142,7 @@ plus.addEventListener('click', function() {
     currentNumberValue = []; 
   } else {
     currentCalculationValue.push(currentNumberValue.join(""));
-    console.log(currentCalculationValue[0]);
-    console.log(currentCalculationValue[1]);
-    console.log(currentCalculationValue[2]);
     let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
-    console.log(newNumValue);
     currentNumberValue = [];
     currentCalculationValue = [];
     currentCalculationValue.push(newNumValue);
@@ -166,11 +160,7 @@ minus.addEventListener('click', function() {
     currentNumberValue = []; 
   } else {
     currentCalculationValue.push(currentNumberValue.join(""));
-    console.log(currentCalculationValue[0]);
-    console.log(currentCalculationValue[1]);
-    console.log(currentCalculationValue[2]);
     let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
-    console.log(newNumValue);
     currentNumberValue = [];
     currentCalculationValue = [];
     currentCalculationValue.push(newNumValue);
@@ -188,9 +178,6 @@ divides.addEventListener('click', function() {
     currentNumberValue = []; 
   } else {
     currentCalculationValue.push(currentNumberValue.join(""));
-    console.log(currentCalculationValue[0]);
-    console.log(currentCalculationValue[1]);
-    console.log(currentCalculationValue[2]);
     if (currentCalculationValue[2] === 0) {
       window.alert("You can't divide by zero silly!");
       currentCalculationValue.pop();
@@ -199,13 +186,11 @@ divides.addEventListener('click', function() {
     } else {
       currentCalculationValue.push(currentNumberValue.join(""));
       let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
-      console.log(newNumValue);
       currentNumberValue = [];
       currentCalculationValue = [];
       currentCalculationValue.push(newNumValue);
       currentCalculationValue.push('÷');
       currentCalculationDiv.innerHTML = `<h2>${newNumValue} ÷</h2>`;
-      console.log(typeof newNumValue);
     }
   }
 });
@@ -219,11 +204,7 @@ times.addEventListener('click', function() {
     currentNumberValue = []; 
   } else {
     currentCalculationValue.push(currentNumberValue.join(""));
-    console.log(currentCalculationValue[0]);
-    console.log(currentCalculationValue[1]);
-    console.log(currentCalculationValue[2]);
     let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
-    console.log(newNumValue);
     currentNumberValue = [];
     currentCalculationValue = [];
     currentCalculationValue.push(newNumValue);
@@ -240,7 +221,7 @@ equals.addEventListener('click', function() {
   } else {
     currentCalculationValue.push(currentNumberValue.join(""));
     let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
-    currentCalculationDiv.innerHTML = `<h2>${currentCalculationValue[0]} ${currentCalculationValue[1]} ${currentCalculationValue[2]} =</h2>`
+    currentCalculationDiv.innerHTML = `<h2>${currentCalculationValue[0]} ${currentCalculationValue[1]} ${currentCalculationValue[2]} =</h2>`;
     currentNumberValue = [parseFloat(newNumValue)];
     currentCalculationValue = [];
     currentNumberDiv.innerHTML = `<h2>${newNumValue}</h2>`;
