@@ -48,16 +48,44 @@ function divide(a, b) {
 function operate(a, b, operator) {
   if (operator === '+') {
     let sum = add(a,b).toFixed(2);
-    return sum;
+    let numArr = Array.from(sum);
+    let lastElementIndex = numArr.length - 1;
+    let secondToLastElementIndex = lastElementIndex -1;
+    if (numArr[lastElementIndex] && numArr[secondToLastElementIndex] == 0) {
+      return Math.trunc(sum)
+    } else {
+      return sum;
+    }
   } else if (operator === '-') {
     let difference = subtract(a,b).toFixed(2);
-    return difference;
+    let numArr = Array.from(difference);
+    let lastElementIndex = numArr.length - 1;
+    let secondToLastElementIndex = lastElementIndex -1;
+    if (numArr[lastElementIndex] && numArr[secondToLastElementIndex] == 0) {
+      return Math.trunc(difference)
+    } else {
+      return difference;
+    }
   } else if (operator === '×') {
     let product = multiply(a,b).toFixed(2);
-    return product;
+    let numArr = Array.from(product);
+    let lastElementIndex = numArr.length - 1;
+    let secondToLastElementIndex = lastElementIndex -1;
+    if (numArr[lastElementIndex] && numArr[secondToLastElementIndex] == 0) {
+      return Math.trunc(product)
+    } else {
+      return product;
+    }
   } else if (operator === '÷') {
     let quotient = divide(a,b).toFixed(2);
-    return quotient;
+    let numArr = Array.from(quotient);
+    let lastElementIndex = numArr.length - 1;
+    let secondToLastElementIndex = lastElementIndex -1;
+    if (numArr[lastElementIndex] && numArr[secondToLastElementIndex] == 0) {
+      return Math.trunc(quotient)
+    } else {
+      return quotient;
+    }
   } else {
     window.alert("An error has occured. Please press CLEAR and try again.")
   }
