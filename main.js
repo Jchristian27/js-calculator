@@ -66,7 +66,7 @@ function divide(a, b) {
   let quotientArr = Array.from(quotient);
   let lastElement = quotientArr.length - 1;
   let secondToLastElement = lastElement - 1;
-  if (quotientArr[lastElement] && quotientArr[secondToLastElement] === '0') {
+  if (quotientArr[lastElement] && quotientArr[secondToLastElement] === 0) {
     return Math.trunc(quotient);
   } else {
     return quotient;
@@ -85,7 +85,15 @@ function operate(a, b, operator) {
     return product;
   } else if (operator === '÷') {
     quotient = divide(a,b).toFixed(2);
-    return quotient;
+    let quotientArr = Array.from(quotient);
+    let lastElement = quotientArr.length - 1;
+    let secondToLastElement = lastElement - 1;
+    if (quotientArr[lastElement] && quotientArr[secondToLastElement] === 0) {
+      return Math.trunc(quotient);
+    } else {
+      return quotient;
+  }
+  
   } else {
     window.alert("An error has occured. Please press CLEAR and try again.")
   }
