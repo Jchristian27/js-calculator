@@ -254,9 +254,10 @@ times.addEventListener('click', function() {
 });
 
 equals.addEventListener('click', function() {
-  arrLength = currentCalculationValue.length;
-  if (currentCalculationValue.length < 1 || (currentCalculationValue.length < 3
-     && currentNumberDiv.innerHTML === '<h2></h2>')) {
+  lastElementIndex = currentCalculationValue.length - 1;
+  if ((currentCalculationValue[lastElementIndex] === "+" && currentNumberValue.length === 0) || (currentCalculationValue[lastElementIndex] === "-" && currentNumberValue.length === 0) || 
+  (currentCalculationValue[lastElementIndex] === "÷" && currentNumberValue.length === 0) || (currentCalculationValue[lastElementIndex] === "×" && currentNumberValue.length === 0) || 
+  currentCalculationValue.length < 1 || (currentCalculationValue.length < 3 && currentNumberDiv.innerHTML === '<h2></h2>')) {
       // Do nothing because there aren't two numbers to operate on yet.
   } else {
     currentCalculationValue.push(currentNumberValue.join(""));
