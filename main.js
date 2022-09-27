@@ -85,13 +85,7 @@ function operate(a, b, operator) {
     return product;
   } else if (operator === '÷') {
     quotient = divide(a,b);
-    if (b === 0) {
-      window.alert("You can't divide by zero silly!");
-      currentCalculationValue.pop();
-      //currentCalculationDiv.innerHTML = `<h2>${a} ${operator}</h2>`;
-    } else {
-      return quotient;
-    }
+    return quotient;
   } else {
     window.alert("An error has occured. Please press CLEAR and try again.")
   }
@@ -225,13 +219,21 @@ divides.addEventListener('click', function() {
     console.log(currentCalculationValue[0]);
     console.log(currentCalculationValue[1]);
     console.log(currentCalculationValue[2]);
-    let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
-    console.log(newNumValue);
-    currentNumberValue = [];
-    currentCalculationValue = [];
-    currentCalculationValue.push(newNumValue);
-    currentCalculationValue.push('÷');
-    currentCalculationDiv.innerHTML = `<h2>${newNumValue} ÷</h2>`;
+    if (currentCalculationValue[2] == 0) {
+      window.alert("You can't divide by zero silly!");
+      currentCalculationValue.pop();
+      currentNumberValue = [];
+      //currentCalculationDiv.innerHTML = `<h2>${a} ${operator}</h2>`;
+    } else {
+      currentCalculationValue.push(currentNumberValue.join(""));
+      let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
+      console.log(newNumValue);
+      currentNumberValue = [];
+      currentCalculationValue = [];
+      currentCalculationValue.push(newNumValue);
+      currentCalculationValue.push('÷');
+      currentCalculationDiv.innerHTML = `<h2>${newNumValue} ÷</h2>`;
+    }
   }
 });
 
