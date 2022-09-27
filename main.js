@@ -19,14 +19,14 @@ const divides = document.getElementById('divide');
 const equals = document.getElementById('equals');
 const clear = document.querySelector('.clear');
 const deletes = document.querySelector('.delete');
-let currentCalculationValue = [ ];
-let currentNumberValue = '';
+let currentCalculationValue = [];
+let currentNumberValue = [];
 
 currentCalculationDiv.innerHTML = "<h2 style='color: #E5E4E2'>0</h2>";
 currentNumberDiv.innerHTML = "<h2>0</h2>";
 
 function add(a, b) {
-  let sum = (a + b).toFixed(2);
+  let sum = (a + b);
   let sumArr = Array.from(sum);
   let lastElement = sumArr.length - 1;
   let secondToLastElement = lastElement - 1;
@@ -75,7 +75,8 @@ function divide(a, b) {
 
 function operate(a, b, operator) {
   if (operator === '+') {
-    currentNumberDiv.innerHTML = `<h2>${add(a,b)}</h2>`;
+    sum = add(a,b);
+    return sum;
   } else if (operator === '-') {
     currentNumberDiv.innerHTML = `<h2>${subtract(a,b)}</h2>`;
   } else if (operator === '×') {
@@ -98,15 +99,13 @@ function addToDisplay(symbol) {
     // Do nothing because currentNum is too big to fit on the display.
   } else {
     if (currentNumberDiv.innerHTML === "<h2>0</h2>") {
-        currentNumberDiv.innerHTML = `<h2>${symbol}</h2>`;
-        currentNumberValue += symbol;
-        //console.log(currentNumberValue);
-        //console.log(currentCalculationValue);
-      } else {
-        currentNumberDiv.innerHTML += `<h2>${symbol}</h2>`;
-        currentNumberValue += symbol;
-        //console.log(currentNumberValue);
-        //console.log(currentCalculationValue);
+      currentNumberValue.push(symbol);  
+      currentNumberDiv.innerHTML = `<h2>${symbol}</h2>`;
+    } else {
+        currentNumberValue.push(symbol); 
+        let cNVString = currentNumberValue.join("").replaceAll(",", ""); 
+        currentNumberDiv.innerHTML = `<h2>${cNVString}</h2>`;
+        console.log(currentNumberValue);
       }
     }
 }
@@ -168,14 +167,25 @@ point.addEventListener('click', function() {
 //operate(parse)
 
 plus.addEventListener('click', function() {
-    currentCalculationDiv.innerHTML = `<h2>${currentNumberValue} +</h2>`;
-    numToPush = stringToNum(currentNumberValue);
-    currentCalculationValue.push(numToPush);
+  if (currentCalculationValue.length < 2) {
+    currentCalculationValue.push(currentNumberValue.join(""));
     currentCalculationValue.push('+');
-    //console.log(currentNumberValue);
-    //console.log(currentCalculationValue);
-    currentNumberValue = '';
-    currentNumberDiv.innerHTML = '';
+    let cNVString = currentNumberValue.join("").replaceAll(",", ""); 
+    currentCalculationDiv.innerHTML = `<h2>${cNVString} +</h2>`;
+    currentNumberValue = []; 
+  } else {
+    currentCalculationValue.push(currentNumberValue.join(""));
+    console.log(currentCalculationValue[0]);
+    console.log(currentCalculationValue[1]);
+    console.log(currentCalculationValue[2]);
+    let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
+    console.log(newNumValue);
+    currentNumberValue = [];
+    currentCalculationValue = [];
+    currentCalculationValue.push(newNumValue);
+    currentCalculationValue.push('+');
+    currentCalculationDiv.innerHTML = `<h2>${newNumValue} +</h2>`;
+  }
 });
 
 minus.addEventListener('click', function() {
@@ -183,8 +193,6 @@ minus.addEventListener('click', function() {
   numToPush = stringToNum(currentNumberValue);
   currentCalculationValue.push(numToPush);
   currentCalculationValue.push('-');
-  //console.log(currentNumberValue);
-  //console.log(currentCalculationValue);
   currentNumberValue = '';
   currentNumberDiv.innerHTML = '<h2></h2>';
 });
@@ -194,8 +202,6 @@ divides.addEventListener('click', function() {
   numToPush = stringToNum(currentNumberValue);
   currentCalculationValue.push(numToPush);
   currentCalculationValue.push('÷');
-  //console.log(currentNumberValue);
-  //console.log(currentCalculationValue);
   currentNumberValue = '';
   currentNumberDiv.innerHTML = '<h2></h2>';
 });
@@ -205,14 +211,11 @@ times.addEventListener('click', function() {
   numToPush = stringToNum(currentNumberValue);
   currentCalculationValue.push(numToPush);
   currentCalculationValue.push('×');
-  //console.log(currentNumberValue);
-  //console.log(currentCalculationValue);
   currentNumberValue = '';
   currentNumberDiv.innerHTML = '<h2></h2>';
 });
 
 equals.addEventListener('click', function() {
-  //console.table(currentCalculationValue);
   arrLength = currentCalculationValue.length;
   if (currentCalculationValue.length < 1 || (currentCalculationValue.length < 3
      && currentNumberDiv.innerHTML === '<h2></h2>')) {
