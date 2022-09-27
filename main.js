@@ -75,16 +75,16 @@ function divide(a, b) {
 
 function operate(a, b, operator) {
   if (operator === '+') {
-    sum = add(a,b);
+    sum = add(a,b).toFixed(2);
     return sum;
   } else if (operator === '-') {
-    difference = subtract(a,b);
+    difference = subtract(a,b).toFixed(2);
     return difference;
   } else if (operator === '×') {
-    product = multiply(a,b);
+    product = multiply(a,b).toFixed(2);
     return product;
   } else if (operator === '÷') {
-    quotient = divide(a,b);
+    quotient = divide(a,b).toFixed(2);
     return quotient;
   } else {
     window.alert("An error has occured. Please press CLEAR and try again.")
@@ -276,16 +276,14 @@ equals.addEventListener('click', function() {
 });
 
 clear.addEventListener('click', function() {
-  currentCalculationValue = [ ];
-  currentNumberValue = '';
+  currentCalculationValue = [];
+  currentNumberValue = [];
   currentCalculationDiv.innerHTML = "<h2 style='color: #E5E4E2'>0</h2>";
   currentNumberDiv.innerHTML = "<h2>0</h2>";
 });
 
 deletes.addEventListener('click', function() {
-  let oneLess = currentNumberValue.split("");
-  oneLess.pop();
-  let stringAgain = oneLess.join('');
-  currentNumberValue = stringAgain;
-  currentNumberDiv.innerHTML = `<h2>${stringAgain}</h2>`;
+  currentNumberValue.pop();
+  let cNVString = currentNumberValue.join("").replaceAll(",", ""); 
+  currentNumberDiv.innerHTML = `<h2>${cNVString}</h2>`;
 });
