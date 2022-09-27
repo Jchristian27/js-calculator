@@ -79,9 +79,21 @@ function addToDisplay(symbol) {
     }
 }
 
-function stringToNum(string) {
-  let num = parseFloat(string);
-  return num;
+// function stringToNum(string) {
+//   let num = parseFloat(string);
+//   return num;
+// }
+
+function truncTrailingZeros (string) {
+  let stringToNum = parseFloat(string);
+  let numArr = Array.from(stringToNum);
+  let lastElementIndex = numArr.length - 1;
+  let secondToLastElementIndex = lastElementIndex -1;
+  if (numArr[lastElementIndex] && numArr[secondToLastElementIndex] == 0) {
+    return Math.trunc(stringToNum).toString();
+  } else {
+    return string;
+  }
 }
 
 one.addEventListener('click', function() {
