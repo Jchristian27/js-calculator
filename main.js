@@ -38,7 +38,7 @@ function add(a, b) {
 };
 
 function subtract(a, b) {
-  let difference = (a - b).toFixed(2);
+  let difference = (a - b);
   let differenceArr = Array.from(difference);
   let lastElement = differenceArr.length - 1;
   let secondToLastElement = lastElement - 1;
@@ -78,7 +78,8 @@ function operate(a, b, operator) {
     sum = add(a,b);
     return sum;
   } else if (operator === '-') {
-    currentNumberDiv.innerHTML = `<h2>${subtract(a,b)}</h2>`;
+    difference = subtract(a,b);
+    return difference;
   } else if (operator === '×') {
     currentNumberDiv.innerHTML = `<h2>${multiply(a,b)}</h2>`;
   } else if (operator === '÷') {
@@ -189,12 +190,25 @@ plus.addEventListener('click', function() {
 });
 
 minus.addEventListener('click', function() {
-  currentCalculationDiv.innerHTML = `<h2>${currentNumberValue} -</h2>`;
-  numToPush = stringToNum(currentNumberValue);
-  currentCalculationValue.push(numToPush);
-  currentCalculationValue.push('-');
-  currentNumberValue = '';
-  currentNumberDiv.innerHTML = '<h2></h2>';
+  if (currentCalculationValue.length < 2) {
+    currentCalculationValue.push(currentNumberValue.join(""));
+    currentCalculationValue.push('-');
+    let cNVString = currentNumberValue.join("").replaceAll(",", ""); 
+    currentCalculationDiv.innerHTML = `<h2>${cNVString} -</h2>`;
+    currentNumberValue = []; 
+  } else {
+    currentCalculationValue.push(currentNumberValue.join(""));
+    console.log(currentCalculationValue[0]);
+    console.log(currentCalculationValue[1]);
+    console.log(currentCalculationValue[2]);
+    let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
+    console.log(newNumValue);
+    currentNumberValue = [];
+    currentCalculationValue = [];
+    currentCalculationValue.push(newNumValue);
+    currentCalculationValue.push('-');
+    currentCalculationDiv.innerHTML = `<h2>${newNumValue} -</h2>`;
+  }
 });
 
 divides.addEventListener('click', function() {
