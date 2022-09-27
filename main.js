@@ -50,7 +50,7 @@ function subtract(a, b) {
 };
 
 function multiply(a, b) {
-  let product = (a * b).toFixed(2);
+  let product = (a * b);
   let productArr = Array.from(product);
   let lastElement = productArr.length - 1;
   let secondToLastElement = lastElement - 1;
@@ -62,7 +62,7 @@ function multiply(a, b) {
 };
 
 function divide(a, b) {
-  let quotient = (a / b).toFixed(2);
+  let quotient = (a / b);
   let quotientArr = Array.from(quotient);
   let lastElement = quotientArr.length - 1;
   let secondToLastElement = lastElement - 1;
@@ -81,14 +81,16 @@ function operate(a, b, operator) {
     difference = subtract(a,b);
     return difference;
   } else if (operator === '×') {
-    currentNumberDiv.innerHTML = `<h2>${multiply(a,b)}</h2>`;
+    product = multiply(a,b);
+    return product;
   } else if (operator === '÷') {
+    quotient = divide(a,b);
     if (b === 0) {
       window.alert("You can't divide by zero silly!");
       currentCalculationValue.pop();
-      currentCalculationDiv.innerHTML = `<h2>${a} ${operator}</h2>`;
+      //currentCalculationDiv.innerHTML = `<h2>${a} ${operator}</h2>`;
     } else {
-      currentNumberDiv.innerHTML = `<h2>${divide(a,b)}</h2>`;
+      return quotient;
     }
   } else {
     window.alert("An error has occured. Please press CLEAR and try again.")
@@ -212,21 +214,47 @@ minus.addEventListener('click', function() {
 });
 
 divides.addEventListener('click', function() {
-  currentCalculationDiv.innerHTML = `<h2>${currentNumberValue} ÷</h2>`;
-  numToPush = stringToNum(currentNumberValue);
-  currentCalculationValue.push(numToPush);
-  currentCalculationValue.push('÷');
-  currentNumberValue = '';
-  currentNumberDiv.innerHTML = '<h2></h2>';
+  if (currentCalculationValue.length < 2) {
+    currentCalculationValue.push(currentNumberValue.join(""));
+    currentCalculationValue.push('÷');
+    let cNVString = currentNumberValue.join("").replaceAll(",", ""); 
+    currentCalculationDiv.innerHTML = `<h2>${cNVString} ÷</h2>`;
+    currentNumberValue = []; 
+  } else {
+    currentCalculationValue.push(currentNumberValue.join(""));
+    console.log(currentCalculationValue[0]);
+    console.log(currentCalculationValue[1]);
+    console.log(currentCalculationValue[2]);
+    let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
+    console.log(newNumValue);
+    currentNumberValue = [];
+    currentCalculationValue = [];
+    currentCalculationValue.push(newNumValue);
+    currentCalculationValue.push('÷');
+    currentCalculationDiv.innerHTML = `<h2>${newNumValue} ÷</h2>`;
+  }
 });
 
 times.addEventListener('click', function() {
-  currentCalculationDiv.innerHTML = `<h2>${currentNumberValue} ×</h2>`;
-  numToPush = stringToNum(currentNumberValue);
-  currentCalculationValue.push(numToPush);
-  currentCalculationValue.push('×');
-  currentNumberValue = '';
-  currentNumberDiv.innerHTML = '<h2></h2>';
+ if (currentCalculationValue.length < 2) {
+    currentCalculationValue.push(currentNumberValue.join(""));
+    currentCalculationValue.push('×');
+    let cNVString = currentNumberValue.join("").replaceAll(",", ""); 
+    currentCalculationDiv.innerHTML = `<h2>${cNVString} ×</h2>`;
+    currentNumberValue = []; 
+  } else {
+    currentCalculationValue.push(currentNumberValue.join(""));
+    console.log(currentCalculationValue[0]);
+    console.log(currentCalculationValue[1]);
+    console.log(currentCalculationValue[2]);
+    let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
+    console.log(newNumValue);
+    currentNumberValue = [];
+    currentCalculationValue = [];
+    currentCalculationValue.push(newNumValue);
+    currentCalculationValue.push('×');
+    currentCalculationDiv.innerHTML = `<h2>${newNumValue} ×</h2>`;
+  }
 });
 
 equals.addEventListener('click', function() {
