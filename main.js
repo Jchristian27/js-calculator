@@ -71,7 +71,10 @@ function operate(a, b, operator) {
     let numArr = Array.from(product);
     let lastElementIndex = numArr.length - 1;
     let secondToLastElementIndex = lastElementIndex -1;
-    if (numArr[lastElementIndex] && numArr[secondToLastElementIndex] == 0) {
+    if (numArr.length > 10) {
+      console.log(parseFloat(product).toExponential(3));
+      return parseFloat(product).toExponential(3);
+    } else if (numArr[lastElementIndex] && numArr[secondToLastElementIndex] == 0) {
       return Math.trunc(product)
     } else {
       return product;
