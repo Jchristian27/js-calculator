@@ -264,11 +264,17 @@ equals.addEventListener('click', function() {
       // Do nothing because there aren't two numbers to operate on yet.
   } else {
     currentCalculationValue.push(currentNumberValue.join(""));
+    if (currentCalculationValue[2] == 0) {
+      window.alert("You can't divide by zero silly!");
+      currentCalculationValue.pop();
+      currentNumberValue = [];
+    } else {
     let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
     currentCalculationDiv.innerHTML = `<h2>${currentCalculationValue[0]} ${currentCalculationValue[1]} ${currentCalculationValue[2]} =</h2>`;
     currentNumberValue = [parseFloat(newNumValue)];
     currentCalculationValue = [];
     currentNumberDiv.innerHTML = `<h2>${newNumValue}</h2>`;
+    }
   }
 });
 
