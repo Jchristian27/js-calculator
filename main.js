@@ -105,7 +105,7 @@ function addToDisplay(symbol) {
         currentNumberValue.push(symbol); 
         let cNVString = currentNumberValue.join("").replaceAll(",", ""); 
         currentNumberDiv.innerHTML = `<h2>${cNVString}</h2>`;
-        console.log(currentNumberValue);
+        //console.log(currentNumberValue);
       }
     }
 }
