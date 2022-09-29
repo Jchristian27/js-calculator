@@ -105,27 +105,21 @@ function addToDisplay(symbol) {
         currentNumberValue.push(symbol); 
         let cNVString = currentNumberValue.join("").replaceAll(",", ""); 
         currentNumberDiv.innerHTML = `<h2>${cNVString}</h2>`;
-        //console.log(currentNumberValue);
       }
     }
 }
 
-// function stringToNum(string) {
-//   let num = parseFloat(string);
-//   return num;
+// function truncTrailingZeros (string) {
+//   let stringToNum = parseFloat(string);
+//   let numArr = Array.from(stringToNum);
+//   let lastElementIndex = numArr.length - 1;
+//   let secondToLastElementIndex = lastElementIndex -1;
+//   if (numArr[lastElementIndex] && numArr[secondToLastElementIndex] == 0) {
+//     return Math.trunc(stringToNum).toString();
+//   } else {
+//     return string;
+//   }
 // }
-
-function truncTrailingZeros (string) {
-  let stringToNum = parseFloat(string);
-  let numArr = Array.from(stringToNum);
-  let lastElementIndex = numArr.length - 1;
-  let secondToLastElementIndex = lastElementIndex -1;
-  if (numArr[lastElementIndex] && numArr[secondToLastElementIndex] == 0) {
-    return Math.trunc(stringToNum).toString();
-  } else {
-    return string;
-  }
-}
 
 one.addEventListener('click', function() {
   addToDisplay('1');
@@ -170,7 +164,7 @@ zero.addEventListener('click', function() {
 point.addEventListener('click', function() {
   let currentNumberDivArr = Array.from(currentNumberValue);
   if (currentNumberDivArr.includes('.')) {
-    //window.alert("You can only use one decimal per number!");
+    // Do nothing because there is already a decimal in use.
   } else {
     addToDisplay('.');
   }
@@ -237,7 +231,6 @@ divides.addEventListener('click', function() {
       window.alert("You can't divide by zero silly!");
       currentCalculationValue.pop();
       currentNumberValue = [];
-      //currentCalculationDiv.innerHTML = `<h2>${a} ${operator}</h2>`;
     } else {
       currentCalculationValue.push(currentNumberValue.join(""));
       let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
