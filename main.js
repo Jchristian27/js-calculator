@@ -109,18 +109,6 @@ function addToDisplay(symbol) {
     }
 }
 
-// function truncTrailingZeros (string) {
-//   let stringToNum = parseFloat(string);
-//   let numArr = Array.from(stringToNum);
-//   let lastElementIndex = numArr.length - 1;
-//   let secondToLastElementIndex = lastElementIndex -1;
-//   if (numArr[lastElementIndex] && numArr[secondToLastElementIndex] == 0) {
-//     return Math.trunc(stringToNum).toString();
-//   } else {
-//     return string;
-//   }
-// }
-
 one.addEventListener('click', function() {
   addToDisplay('1');
 });
@@ -177,13 +165,16 @@ plus.addEventListener('click', function() {
     let cNVString = currentNumberValue.join("").replaceAll(",", ""); 
     currentCalculationDiv.innerHTML = `<h2>${cNVString} +</h2>`;
     currentNumberValue = []; 
-  } else if (currentCalculationValue[1] === '-' && currentNumberValue.length == 0 || currentCalculationValue[1] === '÷'  && currentNumberValue.length == 0 || currentCalculationValue[1] === '×'  && currentNumberValue.length == 0 ) {
+  } else if (currentCalculationValue[1] === '-' && currentNumberValue.length == 0 ||
+            currentCalculationValue[1] === '÷'  && currentNumberValue.length == 0 || 
+            currentCalculationValue[1] === '×'  && currentNumberValue.length == 0 ) {
     currentCalculationValue.pop();
     currentCalculationValue.push('+');
     currentCalculationDiv.innerHTML = `<h2>${currentCalculationValue[0]} +</h2>`;
   } else {
     currentCalculationValue.push(currentNumberValue.join(""));
-    let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
+    let newNumValue = operate(parseFloat(currentCalculationValue[0]), 
+                      parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
     currentNumberValue = [];
     currentCalculationValue = [];
     currentCalculationValue.push(newNumValue);
@@ -199,13 +190,16 @@ minus.addEventListener('click', function() {
     let cNVString = currentNumberValue.join("").replaceAll(",", ""); 
     currentCalculationDiv.innerHTML = `<h2>${cNVString} -</h2>`;
     currentNumberValue = []; 
-  } else if (currentCalculationValue[1] === '+'  && currentNumberValue.length == 0 || currentCalculationValue[1] === '÷'  && currentNumberValue.length == 0 || currentCalculationValue[1] === '×'  && currentNumberValue.length == 0 ) {
+  } else if (currentCalculationValue[1] === '+'  && currentNumberValue.length == 0 || 
+            currentCalculationValue[1] === '÷'  && currentNumberValue.length == 0 || 
+            currentCalculationValue[1] === '×'  && currentNumberValue.length == 0 ) {
     currentCalculationValue.pop();
     currentCalculationValue.push('-');
     currentCalculationDiv.innerHTML = `<h2>${currentCalculationValue[0]} -</h2>`;
   } else {
     currentCalculationValue.push(currentNumberValue.join(""));
-    let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
+    let newNumValue = operate(parseFloat(currentCalculationValue[0]), 
+                      parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
     currentNumberValue = [];
     currentCalculationValue = [];
     currentCalculationValue.push(newNumValue);
@@ -221,7 +215,9 @@ divides.addEventListener('click', function() {
     let cNVString = currentNumberValue.join("").replaceAll(",", ""); 
     currentCalculationDiv.innerHTML = `<h2>${cNVString} ÷</h2>`;
     currentNumberValue = []; 
-  } else if (currentCalculationValue[1] === '+'  && currentNumberValue.length == 0 || currentCalculationValue[1] === '-'  && currentNumberValue.length == 0 || currentCalculationValue[1] === '×'  && currentNumberValue.length == 0 ) {
+  } else if (currentCalculationValue[1] === '+'  && currentNumberValue.length == 0 || 
+            currentCalculationValue[1] === '-'  && currentNumberValue.length == 0 || 
+            currentCalculationValue[1] === '×'  && currentNumberValue.length == 0 ) {
     currentCalculationValue.pop();
     currentCalculationValue.push('÷');
     currentCalculationDiv.innerHTML = `<h2>${currentCalculationValue[0]} ÷</h2>`;
@@ -233,7 +229,8 @@ divides.addEventListener('click', function() {
       currentNumberValue = [];
     } else {
       currentCalculationValue.push(currentNumberValue.join(""));
-      let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
+      let newNumValue = operate(parseFloat(currentCalculationValue[0]), 
+                        parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
       currentNumberValue = [];
       currentCalculationValue = [];
       currentCalculationValue.push(newNumValue);
@@ -250,13 +247,16 @@ times.addEventListener('click', function() {
     let cNVString = currentNumberValue.join("").replaceAll(",", ""); 
     currentCalculationDiv.innerHTML = `<h2>${cNVString} ×</h2>`;
     currentNumberValue = []; 
-  } else if (currentCalculationValue[1] === '+'  && currentNumberValue.length == 0 || currentCalculationValue[1] === '-'  && currentNumberValue.length == 0 || currentCalculationValue[1] === '÷'  && currentNumberValue.length == 0 ) {
+  } else if (currentCalculationValue[1] === '+'  && currentNumberValue.length == 0 || 
+            currentCalculationValue[1] === '-'  && currentNumberValue.length == 0 || 
+            currentCalculationValue[1] === '÷'  && currentNumberValue.length == 0 ) {
     currentCalculationValue.pop();
     currentCalculationValue.push('×');
     currentCalculationDiv.innerHTML = `<h2>${currentCalculationValue[0]} ×</h2>`;
   } else {
     currentCalculationValue.push(currentNumberValue.join(""));
-    let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
+    let newNumValue = operate(parseFloat(currentCalculationValue[0]), 
+                      parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
     currentNumberValue = [];
     currentCalculationValue = [];
     currentCalculationValue.push(newNumValue);
@@ -267,9 +267,12 @@ times.addEventListener('click', function() {
 
 equals.addEventListener('click', function() {
   lastElementIndex = currentCalculationValue.length - 1;
-  if ((currentCalculationValue[lastElementIndex] === "+" && currentNumberValue.length === 0) || (currentCalculationValue[lastElementIndex] === "-" && currentNumberValue.length === 0) || 
-  (currentCalculationValue[lastElementIndex] === "÷" && currentNumberValue.length === 0) || (currentCalculationValue[lastElementIndex] === "×" && currentNumberValue.length === 0) || 
-  currentCalculationValue.length < 1 || (currentCalculationValue.length < 3 && currentNumberDiv.innerHTML === '<h2></h2>')) {
+  if ((currentCalculationValue[lastElementIndex] === "+" && currentNumberValue.length === 0) || 
+     (currentCalculationValue[lastElementIndex] === "-" && currentNumberValue.length === 0) || 
+     (currentCalculationValue[lastElementIndex] === "÷" && currentNumberValue.length === 0) || 
+     (currentCalculationValue[lastElementIndex] === "×" && currentNumberValue.length === 0) || 
+     currentCalculationValue.length < 1 || (currentCalculationValue.length < 3 && 
+     currentNumberDiv.innerHTML === '<h2></h2>')) {
       // Do nothing because there aren't two numbers to operate on yet.
   } else {
     currentCalculationValue.push(currentNumberValue.join(""));
@@ -278,8 +281,11 @@ equals.addEventListener('click', function() {
       currentCalculationValue.pop();
       currentNumberValue = [];
     } else {
-    let newNumValue = operate(parseFloat(currentCalculationValue[0]), parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
-    currentCalculationDiv.innerHTML = `<h2>${currentCalculationValue[0]} ${currentCalculationValue[1]} ${currentCalculationValue[2]} =</h2>`;
+    let newNumValue = operate(parseFloat(currentCalculationValue[0]), 
+                      parseFloat(currentCalculationValue[2]), currentCalculationValue[1]);
+    currentCalculationDiv.innerHTML = `<h2>${currentCalculationValue[0]} 
+                                      ${currentCalculationValue[1]} 
+                                      ${currentCalculationValue[2]} =</h2>`;
     currentNumberValue = [parseFloat(newNumValue)];
     currentCalculationValue = [];
     currentNumberDiv.innerHTML = `<h2>${newNumValue}</h2>`;
