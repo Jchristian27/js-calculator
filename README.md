@@ -1,1 +1,3 @@
 # js-calculator
+
+This project is a calulator built with vanilla HTML, CSS, and JavaScript as the final project for The Odin Project's Foundations Course. This was by far the hardest project I have done so far. It took me 2 weeks of error after error (and countless thoughts about giving up) to finish it, but I am really glad I committed myself to working on it every day until I figured it out. I learned a lot about JS by building this calculator and got to play around with CSS to make it look clean and minimal. 
