@@ -177,7 +177,7 @@ plus.addEventListener('click', function() {
     let cNVString = currentNumberValue.join("").replaceAll(",", ""); 
     currentCalculationDiv.innerHTML = `<h2>${cNVString} +</h2>`;
     currentNumberValue = []; 
-  } else if (currentCalculationValue[1] === '-' || currentCalculationValue[1] === '÷' || currentCalculationValue[1] === '×' ) {
+  } else if (currentCalculationValue[1] === '-' && currentNumberValue.length == 0 || currentCalculationValue[1] === '÷'  && currentNumberValue.length == 0 || currentCalculationValue[1] === '×'  && currentNumberValue.length == 0 ) {
     currentCalculationValue.pop();
     currentCalculationValue.push('+');
     currentCalculationDiv.innerHTML = `<h2>${currentCalculationValue[0]} +</h2>`;
@@ -199,7 +199,7 @@ minus.addEventListener('click', function() {
     let cNVString = currentNumberValue.join("").replaceAll(",", ""); 
     currentCalculationDiv.innerHTML = `<h2>${cNVString} -</h2>`;
     currentNumberValue = []; 
-  } else if (currentCalculationValue[1] === '+' || currentCalculationValue[1] === '÷' || currentCalculationValue[1] === '×' ) {
+  } else if (currentCalculationValue[1] === '+'  && currentNumberValue.length == 0 || currentCalculationValue[1] === '÷'  && currentNumberValue.length == 0 || currentCalculationValue[1] === '×'  && currentNumberValue.length == 0 ) {
     currentCalculationValue.pop();
     currentCalculationValue.push('-');
     currentCalculationDiv.innerHTML = `<h2>${currentCalculationValue[0]} -</h2>`;
@@ -221,7 +221,7 @@ divides.addEventListener('click', function() {
     let cNVString = currentNumberValue.join("").replaceAll(",", ""); 
     currentCalculationDiv.innerHTML = `<h2>${cNVString} ÷</h2>`;
     currentNumberValue = []; 
-  } else if (currentCalculationValue[1] === '+' || currentCalculationValue[1] === '-' || currentCalculationValue[1] === '×' ) {
+  } else if (currentCalculationValue[1] === '+'  && currentNumberValue.length == 0 || currentCalculationValue[1] === '-'  && currentNumberValue.length == 0 || currentCalculationValue[1] === '×'  && currentNumberValue.length == 0 ) {
     currentCalculationValue.pop();
     currentCalculationValue.push('÷');
     currentCalculationDiv.innerHTML = `<h2>${currentCalculationValue[0]} ÷</h2>`;
@@ -250,7 +250,7 @@ times.addEventListener('click', function() {
     let cNVString = currentNumberValue.join("").replaceAll(",", ""); 
     currentCalculationDiv.innerHTML = `<h2>${cNVString} ×</h2>`;
     currentNumberValue = []; 
-  } else if (currentCalculationValue[1] === '+' || currentCalculationValue[1] === '-' || currentCalculationValue[1] === '÷' ) {
+  } else if (currentCalculationValue[1] === '+'  && currentNumberValue.length == 0 || currentCalculationValue[1] === '-'  && currentNumberValue.length == 0 || currentCalculationValue[1] === '÷'  && currentNumberValue.length == 0 ) {
     currentCalculationValue.pop();
     currentCalculationValue.push('×');
     currentCalculationDiv.innerHTML = `<h2>${currentCalculationValue[0]} ×</h2>`;
